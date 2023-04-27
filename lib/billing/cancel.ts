@@ -2,9 +2,9 @@ import {ConfigInterface} from '../base-types';
 import {graphqlClientClass} from '../clients/graphql/graphql_client';
 import {BillingError} from '../error';
 
-import {UnsubscribeParams, UnsubscribeResponse} from './types';
+import {CancelParams, CancelResponse} from './types';
 
-const UNSUBSCRIBE_MUTATION = `
+const CANCEL_MUTATION = `
   mutation appSubscriptionCancel($id: ID!, $returnUrl: String!) {
     appSubscriptionCancel(id: $id) {
       appSubscription {
@@ -20,18 +20,18 @@ const UNSUBSCRIBE_MUTATION = `
   }
 `;
 
-export function unsubscribe(config: ConfigInterface) {
+export function cancel(config: ConfigInterface) {
   return async function (
-    subscriptionInfo: UnsubscribeParams,
-  ): Promise<UnsubscribeResponse> {
+    subscriptionInfo: CancelParams,
+  ): Promise<CancelResponse> {
     const {session, subscriptionId, prorate = true} = subscriptionInfo;
 
     const GraphqlClient = graphqlClientClass({config});
     const client = new GraphqlClient({session});
 
-    const response = await client.query<UnsubscribeResponse>({
+    const response = await client.query<CancelResponse>({
       data: {
-        query: UNSUBSCRIBE_MUTATION,
+        query: CANCEL_MUTATION,
         variables: {
           id: subscriptionId,
           prorate,

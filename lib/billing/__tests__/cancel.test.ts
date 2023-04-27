@@ -14,7 +14,7 @@ const GRAPHQL_BASE_REQUEST = {
   headers: {'X-Shopify-Access-Token': ACCESS_TOKEN},
 };
 
-describe('shopify.billing.unsubscribe', () => {
+describe('shopify.billing.cancel', () => {
   const session = new Session({
     id: '1234',
     shop: DOMAIN,
@@ -38,8 +38,8 @@ describe('shopify.billing.unsubscribe', () => {
     });
   });
 
-  test('After a user unsubscribes the check function should return', async () => {
-    queueMockResponses([Responses.UNSUBSCRIBE_RESPONSE]);
+  test('After a user cancels the check function should return', async () => {
+    queueMockResponses([Responses.CANCEL_RESPONSE]);
 
     const {
       data: {
@@ -48,12 +48,12 @@ describe('shopify.billing.unsubscribe', () => {
     } = Responses.EXISTING_SUBSCRIPTION_OBJECT;
 
     const subscriptionId = activeSubscriptions[0].id;
-    const response = await shopify.billing.unsubscribe({
+    const response = await shopify.billing.cancel({
       session,
       subscriptionId,
     });
 
-    expect(response).toEqual(JSON.parse(Responses.UNSUBSCRIBE_RESPONSE));
+    expect(response).toEqual(JSON.parse(Responses.CANCEL_RESPONSE));
     expect({
       ...GRAPHQL_BASE_REQUEST,
       data: {

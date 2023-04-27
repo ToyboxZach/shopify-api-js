@@ -2,7 +2,7 @@ import {ConfigInterface} from '../base-types';
 
 import {check} from './check';
 import {request} from './request';
-import {unsubscribe} from './unsubscribe';
+import {cancel} from './cancel';
 
 /**
  * TODO:
@@ -24,7 +24,7 @@ export function shopifyBilling(config: ConfigInterface) {
   return {
     check: check(config),
     request: request(config),
-    unsubscribe: unsubscribe(config),
+    cancel: cancel(config),
   };
 }
 

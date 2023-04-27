@@ -46,7 +46,7 @@ export interface RequestParams {
   isTest?: boolean;
 }
 
-export interface UnsubscribeParams {
+export interface CancelParams {
   session: Session;
   subscriptionId: number;
   prorate?: boolean;
@@ -121,7 +121,7 @@ interface AppSubscription {
   trialDays: number;
 }
 
-export interface UnsubscribeResponse {
+export interface CancelResponse {
   data: {
     appSubscription: AppSubscription;
   };

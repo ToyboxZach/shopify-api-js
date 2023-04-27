@@ -142,7 +142,7 @@ export const PURCHASE_SUBSCRIPTION_RESPONSE_WITH_USER_ERRORS = JSON.stringify({
   },
 });
 
-export const UNSUBSCRIBE_RESPONSE = JSON.stringify({
+export const CANCEL_RESPONSE = JSON.stringify({
   data: {
     appSubscriptionCancel: {
       appSubscription: {
