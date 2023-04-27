@@ -105,6 +105,7 @@ const HAS_PAYMENTS_QUERY = `
   query appSubscription($endCursor: String) {
     currentAppInstallation {
       activeSubscriptions {
+        id
         name
         test
       }

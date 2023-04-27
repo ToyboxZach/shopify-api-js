@@ -46,6 +46,13 @@ export interface RequestParams {
   isTest?: boolean;
 }
 
+export interface UnsubscribeParams {
+  session: Session;
+  subscriptionId: number;
+  prorate?: boolean;
+  isTest?: boolean;
+}
+
 interface ActiveSubscription {
   name: string;
   test: boolean;
@@ -97,6 +104,26 @@ export interface RecurringPaymentResponse {
 export interface SinglePaymentResponse {
   data: {
     appPurchaseOneTimeCreate: RequestResponse;
+  };
+  errors?: string[];
+}
+
+// Ideally this is imported from core GQL types TODO:
+interface AppSubscription {
+  createdAt: string;
+  currentPeriodEnd: string;
+  id: string;
+  lineItems?: [any];
+  name: string;
+  returnUrl: string;
+  status: string;
+  test: boolean;
+  trialDays: number;
+}
+
+export interface UnsubscribeResponse {
+  data: {
+    appSubscription: AppSubscription;
   };
   errors?: string[];
 }
