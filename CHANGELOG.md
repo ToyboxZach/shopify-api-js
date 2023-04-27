@@ -1,5 +1,28 @@
 # Changelog
 
+## 7.0.1
+
+### Patch Changes
+
+- 8de3c783: Removed setCrypto function to simplify runtimes
+- 2628a7fc: Add scopes validation for AuthScopes object and convert it to array. Fixes [#1208](https://github.com/Shopify/shopify-app-template-node/issues/1208), [1221](https://github.com/Shopify/shopify-app-template-node/issues/1221)
+- d028ec0f: Replace `semver` with `compare-versions` lib to reduce dependency on nodejs builtin-libs
+- 7dcecb65: [Custom store apps only] Add new `adminApiAccessToken` parameter to `config` for when `isCustomStoreApp` is `true`. If set, it will be used for API access. `apiSecretKey` should now be set to the custom store app's API secret key, which is used to validate the HMAC of webhook events received from Shopify for a custom store app. Fixes #772, #800
+
+  For apps that don't receive HTTP webhook events from Shopify, no change is required yet - `apiSecretKey` will be used for client authentication as the fallback option.
+
+  Starting with the next major release
+
+  - `adminApiAccessToken` will be mandatory for custom store apps and must be set to the Admin API access token
+  - `apiSecretKey` will not be used for client authentication but must be set for HMAC validation of HTTP webhook events
+
+  See [setting up a custom store app](https://github.com/shopify/shopify-api-js/blob/main/docs/guides/custom-store-app.md) for more details.
+
+- f04f0f64: apiKey configuration parameter is not mandatory when isCustomStoreApp is true. Fixes 782
+- 8de6024f: [Fix] Forward original graphql error message to client
+- f09417c4: Adds check for Google's Crawler in the authorization functions to prevent CookieNotFound error loops. Fixes #686
+- cbffa2f6: Add trial days and replacement behavior to usage billing mutation. Fixes #770
+
 ## 7.0.0
 
 ### Major Changes
