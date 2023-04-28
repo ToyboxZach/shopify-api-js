@@ -72,7 +72,7 @@ If you're gating access to the entire app, you should check for billing:
 
 ## Canceling a subscription
 
-With the `cancel` method you'll be able to cancel a single subscription. If you're not storing subscription ids already you can use the `check` method now to get the id of an active subscription before canceling it.
+With the `cancel` method you'll be able to cancel a single subscription. If you're not storing subscription ids already you can use the `check` method now to get the id of an active subscription before canceling it. The `cancel` method will require the `session` object that is setup during Authorization as well as the subscription id.
 
 The call to `cancel` will return an AppSubscription object and will throw a `BillingError` if any errors occur.
 
