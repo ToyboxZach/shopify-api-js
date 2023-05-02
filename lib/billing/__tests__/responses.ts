@@ -154,3 +154,11 @@ export const CANCEL_RESPONSE = JSON.stringify({
     },
   },
 });
+
+export const SUBSCRIPTIONS_RESPONSE = JSON.stringify({
+  data: {
+    currentAppInstallation: {
+      activeSubscriptions: [{id: 123, name: PLAN_1, test: true}],
+    },
+  },
+});

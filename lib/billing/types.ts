@@ -123,13 +123,13 @@ export interface AppSubscription {
 
 export interface SubscriptionResponse {
   data: {
-    appSubscription: AppSubscription;
+    currentAppInstallation: ActiveSubscriptions;
   };
 }
 
 export interface CancelResponse {
   data: {
-    appSubscription: AppSubscription;
+    currentAppInstallation: ActiveSubscriptions;
   };
   errors?: string[];
 }

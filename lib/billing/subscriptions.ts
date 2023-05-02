@@ -34,6 +34,6 @@ export function subscriptions(config: ConfigInterface) {
       },
     });
 
-    return response.body.data.appSubscription;
+    return response.body.data.currentAppInstallation;
   };
 }
