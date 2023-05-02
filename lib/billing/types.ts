@@ -53,12 +53,13 @@ export interface CancelParams {
   isTest?: boolean;
 }
 
-interface ActiveSubscription {
+export interface ActiveSubscription {
+  id: string;
   name: string;
   test: boolean;
 }
 
-interface ActiveSubscriptions {
+export interface ActiveSubscriptions {
   activeSubscriptions: ActiveSubscription[];
 }
 
@@ -108,8 +109,7 @@ export interface SinglePaymentResponse {
   errors?: string[];
 }
 
-// Ideally this is imported from core GQL types TODO:
-interface AppSubscription {
+export interface AppSubscription {
   createdAt: string;
   currentPeriodEnd: string;
   id: string;
@@ -119,6 +119,12 @@ interface AppSubscription {
   status: string;
   test: boolean;
   trialDays: number;
+}
+
+export interface SubscriptionResponse {
+  data: {
+    appSubscription: AppSubscription;
+  };
 }
 
 export interface CancelResponse {
