@@ -3,7 +3,7 @@ import {ConfigInterface} from '../base-types';
 import {graphqlClientClass} from '../clients/graphql/graphql_client';
 import {Session} from '../session/session';
 
-import {AppSubscription, SubscriptionResponse} from './types';
+import {ActiveSubscriptions, SubscriptionResponse} from './types';
 
 const SUBSCRIPTION_QUERY = `
   query appSubscription() {
@@ -17,7 +17,7 @@ const SUBSCRIPTION_QUERY = `
 `;
 
 export function subscriptions(config: ConfigInterface) {
-  return async function (session: Session): Promise<AppSubscription> {
+  return async function (session: Session): Promise<ActiveSubscriptions> {
     if (!config.billing) {
       throw new BillingError({
         message: 'Attempted to look for purchases without billing configs',
