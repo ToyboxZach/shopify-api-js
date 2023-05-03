@@ -17,6 +17,7 @@ export enum DataType {
 export type QueryParams =
   | string
   | number
+  | Date
   | string[]
   | number[]
   | {[key: string]: QueryParams};
